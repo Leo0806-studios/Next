@@ -32,6 +32,7 @@ typedef unsigned short wctype_t;
 typedef long __time32_t;
 typedef __int64 __time64_t;
 typedef size_t rsize_t;
+typedef void(*void_void_func)(void);
 
 #if __STDC_VERSION__ >= 202311l //BOOOOOOOOO intellisense lies when cstdlatest is set and falsely claims the bool keyword exists
 #	ifndef __cplusplus

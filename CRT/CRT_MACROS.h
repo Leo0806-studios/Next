@@ -22,7 +22,7 @@
 #else
 #	define  __CRT_API 
 #endif
-
+#define __CRT_NORETURN __declspec(noreturn)
 
 
 #define __CRT_CONV __cdecl

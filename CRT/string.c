@@ -43,7 +43,6 @@ char* strcat(char* restrict dest, const char* restrict src)
 
 char* strncat(char* restrict dest, const char* restrict src, size_t count)
 {
-	size_t srcLen = strlen(src);
 	size_t destLen = strlen(dest);
 	size_t i = 0;
 	size_t fixedCount = destLen + count;
@@ -59,5 +58,6 @@ char* strncat(char* restrict dest, const char* restrict src, size_t count)
 
 char* strdup(const char* src)
 {
+	(void)src;
 	return NULL;
 }

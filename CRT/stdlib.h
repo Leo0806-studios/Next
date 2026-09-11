@@ -68,4 +68,59 @@ unsigned long  strtoul(const char* restrict nptr, char** restrict endptr, int ba
 unsigned long long  strtoull(const char* restrict nptr, char** restrict endptr, int base);
 
 int rand(void);
+void srand(unsigned int seed);
+
+void* aligned_alloc(size_t alignment, size_t size);
+void* calloc(size_t nmemb, size_t size);
+void free(void* ptr);
+void free_sized(void* ptr, size_t size);
+void free_aligned_sized(void* ptr, size_t alignment, size_t size);
+void* malloc(size_t size);
+void* realloc(void* ptr, size_t size);
+__CRT_NORETURN void abort(void);
+
+int atexit(void_void_func func);
+int at_quick_exit(void_void_func func);
+__CRT_NORETURN void exit(int status);
+__CRT_NORETURN void _Exit(int status);
+
+/// <summary>
+/// getenv() extension
+/// when "name" is null getenv() performs a capability query 
+///		if the returned value is NULL, envoironment variables are not supported
+///		if the returned value is not NULL,enviroment variables are supported
+/// for any other argument, getenv() behaves as normal
+/// </summary>
+/// <param name="name"></param>
+/// <returns></returns>
+char* getenv(const char* name);
+__CRT_NORETURN void quick_exit(int status);
+int system(const char* string);
+#ifndef __cplusplus
+void* bsearch(const void* key, void* base, size_t nmemb, size_t size,	int (*compar)(const void*, const void*)); //yeah im sadly not compliant here
+#else
+template <typename T>
+T* bsearch(const T* key, T* base, size_t nmemb, int (*compar)(const T*, const T*))
+{
+	return (T*)bsearch((const void*)key, (void*)base, nmemb, sizeof(T), (int (*)(const void*, const void*))compar);
+}
+#endif
+void qsort(void* base, size_t nmemb, size_t size,	int (*compar)(const void*, const void*));
+
+
+int abs(int j);
+long int labs(long int j);
+long long int llabs(long long int j);
+div_t div(int numer, int denom);
+ldiv_t ldiv(long int numer, long int denom);
+lldiv_t lldiv(long long int numer, long long int denom);
+
+int mblen(const char* s, size_t n);
+int mbtowc(wchar_t* restrict pwc, const char* restrict s, size_t n);	
+int wctomb(char* s, wchar_t wc);
+
+size_t mbstowcs(wchar_t* restrict pwcs, const char* restrict s, size_t n);
+size_t wcstombs(char* restrict s, const wchar_t* restrict pwcs, size_t n);
+size_t memalignment(const void* p);
+
 #endif // !__STDLIB__

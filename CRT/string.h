@@ -6,39 +6,47 @@
 __CRT_START
 #pragma warning (push)
 #pragma warning(disable: __DISABLE_CRT_WARNINGS)
-
-
-
-
-char* strcpy(char* restrict dest, const char* restrict src);
-errno_t strcpy_s(char* restrict dest, rsize_t destsz, const char* restrict src);
-
-
-char* strncpy(char* restrict dest, const char* restrict src, size_t count);
-errno_t strncpy_s(char* restrict dest, rsize_t destsz,	const char* restrict src, rsize_t count);
-
-
-char* strcat(char* restrict dest, const char* restrict src);
-errno_t strcat_s(char* restrict dest, rsize_t destsz, const char* restrict src);
-
-
-char* strncat(char* restrict dest, const char* restrict src, size_t count);
-errno_t strncat_s(char* restrict dest, rsize_t destsz,	const char* restrict src, rsize_t count);
-
-
-//size_t strxfrm(char* restrict dest, const char* restrict src, size_t count); //idk......
-
-char* strdup(const char* src);
-
-
-inline size_t strlen(const char* str) {
-	size_t len = 0;
-	while (str[len] != '\0') {
-		len++;
-	}
-	return len;
+void* memcpy(void* restrict s1, const void* restrict s2, size_t n);
+void* memccpy(void* restrict s1, const void* restrict s2, int c, size_t n);
+void* memmove(void* s1, const void* s2, size_t n);
+char* strcpy(char* restrict s1, const char* restrict s2);
+char* strncpy(char* restrict s1, const char* restrict s2, size_t n);
+char* strdup(const char* s);
+char* strndup(const char* s, size_t n);
+char* strcat(char* restrict s1, const char* restrict s2);
+char* strncat(char* restrict s1, const char* restrict s2, size_t n);
+int memcmp(const void* s1, const void* s2, size_t n);
+int strcmp(const char* s1, const char* s2);
+int strcoll(const char* s1, const char* s2);
+int strncmp(const char* s1, const char* s2, size_t n);
+size_t strxfrm(char* restrict s1, const char* restrict s2, size_t n);
+#ifndef __cplusplus
+void* memchr(void* s, int c, size_t n);
+char* strchr(char* s, int c);
+#else
+template <typename T>
+T* memchr(T* s, int c, size_t n) {
+	return (T*)memchr((void*)s, c, n);
 }
-
+template <typename T>
+T* strchr(T* s, int c) {
+	return (T*)strchr((char*)s, c);
+}
+#endif // !__cplusplus
+size_t strcspn(const char* s1, const char* s2);
+#ifndef __cplusplus
+char* strstr(char* s1, const char* s2);
+#else
+template <typename T>
+T* strstr(T* s1, const char* s2) {
+	return (T*)strstr((char*)s1, s2);
+}
+#endif // !__cplusplus
+char* strtok(char* restrict s1, const char* restrict s2);
+void* memset(void* s, int c, size_t n);
+void* memset_explicit(void* s, int c, size_t n);
+char* strerror(int errnum);
+size_t strlen(const char* s);
 #pragma warning (pop)
 
 __CRT_END
