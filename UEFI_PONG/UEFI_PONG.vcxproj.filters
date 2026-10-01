@@ -15,54 +15,54 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SOURCE\main.c">
+    <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BOOTLOADER\SOURCE\HEAP\HEAP.c">
+    <ClCompile Include="HEAP.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BOOTLOADER\HEADER\STARTUP\STARTUP.h">
+    <ClCompile Include="STARTUP.h">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\STARTUP_BOOTLOADER.c">
+    <ClCompile Include="STARTUP_BOOTLOADER.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\SUB\CPUID_HANDELING.c">
+    <ClCompile Include="CPUID_HANDELING.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\SUB\ACPI_HANDELING.cpp">
+    <ClCompile Include="ACPI_HANDELING.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BOOTLOADER\HEADER\BCD\BCD.cpp">
+    <ClCompile Include="BCD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BOOTLOADER\HEADER\ANNOTATIONS.h">
+    <ClInclude Include="ANNOTATIONS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BOOTLOADER\HEADER\GLOBALS.h">
+    <ClInclude Include="GLOBALS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BOOTLOADER\HEADER\HEAP\HEAP.h">
+    <ClInclude Include="HEAP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BOOTLOADER\HEADER\BOOT_DATA_INTERFACE.h">
+    <ClInclude Include="BOOT_DATA_INTERFACE.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BOOTLOADER\HEADER\CPUID_LEAFS.h">
+    <ClInclude Include="CPUID_LEAFS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BOOTLOADER\HEADER\ACPI_STRUCTS.h">
+    <ClInclude Include="ACPI_STRUCTS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BOOTLOADER\SOURCE\STARTUP\SUB\SUB_FORWARD_DECLARATIONS.h">
+    <ClInclude Include="SUB_FORWARD_DECLARATIONS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BOOTLOADER\HEADER\BCD\BCD.h">
+    <ClInclude Include="BCD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BOOTLOADER\HEADER\FILESYSTEM\FILESYSTEM.h">
+    <ClInclude Include="FILESYSTEM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

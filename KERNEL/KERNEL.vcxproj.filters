@@ -5,103 +5,21 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="MAIN.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PCI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RENDER.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PAGE_MAP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SYSTEM_INFO.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CONSOLE.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ALLOCATION.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GDT.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FONT.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WATCHDOG.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PE_PARSER.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PANIC.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="PCI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RENDER.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GDT.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PAGE_MAP.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SYSTEM_INFO.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CONSOLE.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ALLOCATION.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SAL.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WATCHDOG.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PE_PARSER.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PANIC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FILESYSTEM.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{ceec3a7c-9635-4b32-adfd-359ce2691a4a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
     <None Include="KERNEL.suppress" />
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="GDT_LOAD.asm">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </MASM>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="FONT_BMP.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -86,6 +86,7 @@
     <UseStructuredOutput />
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
+    <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)x64\$(Configuration)\</OutDir>
@@ -98,6 +99,7 @@
     <CopyCppRuntimeToOutputDir />
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
+    <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -132,7 +134,7 @@
       </SDLCheck>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>Default</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\DIR_JUNKTIONS;C:\Users\leo08\source\repos\UEFI_GAMES\UEFI_PONG\PONG\GAME\HEADER;$(ProjectDir)BOOTLOADER\HEADER;$(ProjectDir)$PONG\GAME\HEADER;$(ProjectDir)PONG\ENGINE\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>false</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -154,7 +156,7 @@
       <RandomizedBaseAddress>
       </RandomizedBaseAddress>
       <DataExecutionPrevention>false</DataExecutionPrevention>
-      <AdditionalLibraryDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <AdditionalDependencies>efilib.lib;libcmtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OptimizeReferences>true</OptimizeReferences>
@@ -170,7 +172,7 @@
       </SDLCheck>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>Default</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES;C:\Users\leo08\source\repos\UEFI_GAMES\depend;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers\gnu-efi\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>false</TreatWarningAsError>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <ExceptionHandling>false</ExceptionHandling>
@@ -179,11 +181,12 @@
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <CompileAs>CompileAsC</CompileAs>
       <DisableSpecificWarnings>4091</DisableSpecificWarnings>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\depend\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>gnu-efi.lib;libcmt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <OptimizeReferences>true</OptimizeReferences>
@@ -193,24 +196,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BOOTLOADER\HEADER\BCD\BCD.cpp" />
-    <ClCompile Include="BOOTLOADER\HEADER\STARTUP\STARTUP.h" />
-    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\STARTUP_BOOTLOADER.c" />
-    <ClCompile Include="BOOTLOADER\SOURCE\HEAP\HEAP.c" />
-    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\SUB\ACPI_HANDELING.cpp" />
-    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\SUB\CPUID_HANDELING.c" />
-    <ClCompile Include="SOURCE\main.c" />
+    <ClCompile Include="BCD.cpp" />
+    <ClCompile Include="STARTUP.h" />
+    <ClCompile Include="STARTUP_BOOTLOADER.c" />
+    <ClCompile Include="HEAP.c" />
+    <ClCompile Include="ACPI_HANDELING.cpp" />
+    <ClCompile Include="CPUID_HANDELING.c" />
+    <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BOOTLOADER\HEADER\ACPI_STRUCTS.h" />
-    <ClInclude Include="BOOTLOADER\HEADER\BCD\BCD.h" />
-    <ClInclude Include="BOOTLOADER\HEADER\BOOT_DATA_INTERFACE.h" />
-    <ClInclude Include="BOOTLOADER\HEADER\ANNOTATIONS.h" />
-    <ClInclude Include="BOOTLOADER\HEADER\CPUID_LEAFS.h" />
-    <ClInclude Include="BOOTLOADER\HEADER\FILESYSTEM\FILESYSTEM.h" />
-    <ClInclude Include="BOOTLOADER\HEADER\GLOBALS.h" />
-    <ClInclude Include="BOOTLOADER\HEADER\HEAP\HEAP.h" />
-    <ClInclude Include="BOOTLOADER\SOURCE\STARTUP\SUB\SUB_FORWARD_DECLARATIONS.h" />
+    <ClInclude Include="ACPI_STRUCTS.h" />
+    <ClInclude Include="BCD.h" />
+    <ClInclude Include="BOOT_DATA_INTERFACE.h" />
+    <ClInclude Include="ANNOTATIONS.h" />
+    <ClInclude Include="CPUID_LEAFS.h" />
+    <ClInclude Include="FILESYSTEM.h" />
+    <ClInclude Include="GLOBALS.h" />
+    <ClInclude Include="HEAP.h" />
+    <ClInclude Include="SUB_FORWARD_DECLARATIONS.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

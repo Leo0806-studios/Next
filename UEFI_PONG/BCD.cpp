@@ -1,5 +1,5 @@
 #include "BCD.h"
-#include "HEAP/HEAP.h"
+#include "HEAP.h"
 #include <stdbool.h>
 static bool isspace(unsigned char c) {
 	return (c == ' ') || (c == '\t');
@@ -336,6 +336,6 @@ BCD* ParseBCD(const char* bcdStr)
 	return ret;
 }
 
-FreeBCD(BCD* bcd)
+void FreeBCD(BCD* bcd)
 {
 }

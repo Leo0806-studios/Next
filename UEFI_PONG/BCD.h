@@ -71,7 +71,7 @@ BCD* ParseBCD(const char* bcdStr);
 /// is internaly protected against double calls (does nothing on second call on same object/ finishes clanup)
 /// </summary>
 /// <param name="bcd"></param>
-FreeBCD(BCD* bcd);
+void FreeBCD(BCD* bcd);
 
 /// <summary>
 /// looks up a entry in a bcd section by its string key. returns a pointer to the pair if found, otherwise returns NULL. the section must be provided as a pointer to avoid having to look it up by string again. if you dont have a pointer to the section use FindPairDirect or FindPairDirectHash instead which will look up the section for you but will be slower.

@@ -12,9 +12,9 @@ extern "C" {
 #endif // __cplusplus
 #include <intrin.h>
 #include "GLOBALS.h"
-#include "HEAP/HEAP.h"
-#include "STARTUP/STARTUP.h"
-#include "SUB/SUB_FORWARD_DECLARATIONS.h"
+#include "HEAP.h"
+#include "STARTUP.h"
+#include "SUB_FORWARD_DECLARATIONS.h"
 EFI_STATUS CollectProtocolls(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable);
 
 EFI_STATUS InitBootloader(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)

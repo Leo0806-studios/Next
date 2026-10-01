@@ -188,39 +188,17 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MAIN.cpp" />
-    <ClCompile Include="PCI.cpp" />
-    <ClCompile Include="GDT.cpp" />
-    <ClCompile Include="PAGE_MAP.cpp" />
-    <ClCompile Include="PE_PARSER.cpp" />
-    <ClCompile Include="ALLOCATION.cpp" />
-    <ClCompile Include="CONSOLE.cpp" />
-    <ClCompile Include="PANIC.cpp" />
-    <ClCompile Include="FONT.cpp" />
-    <ClCompile Include="RENDER.cpp" />
-    <ClCompile Include="WATCHDOG.cpp" />
-    <ClCompile Include="SYSTEM_INFO.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="PCI.h" />
-    <ClInclude Include="SAL.h" />
-    <ClInclude Include="GDT.h" />
-    <ClInclude Include="PAGE_MAP.h" />
-    <ClInclude Include="PE_PARSER.h" />
-    <ClInclude Include="ALLOCATION.h" />
-    <ClInclude Include="CONSOLE.h" />
-    <ClInclude Include="FILESYSTEM.h" />
-    <ClInclude Include="PANIC.h" />
-    <ClInclude Include="RENDER.h" />
-    <ClInclude Include="WATCHDOG.h" />
-    <ClInclude Include="SYSTEM_INFO.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CPP_RUNTIMELIB_STATIC_PART\CPP_RUNTIMELIB_STATIC_PART.vcxproj">
       <Project>{433d88f9-0cf3-42da-9a57-d717557a5258}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\CRT\CRT.vcxproj">
+      <Project>{99dcd9fc-9da9-4f7e-a6ef-7ad0a02194c5}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\FREESTANDING_STD++LIB\FREESTANDING_STD++LIB.vcxproj">
       <Project>{bee9a4c9-bc28-4a6c-a32f-6d238a748ee1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UEFI_PONG\UEFI_PONG.vcxproj">
+      <Project>{1c6aa463-4706-40f5-84a7-ee2d28b2b692}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -228,10 +206,7 @@
     <None Include="KERNEL.suppress" />
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="GDT_LOAD.asm" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="FONT_BMP.bmp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,9 +1,9 @@
 #pragma warning (push,0)
-#include "gnu_efi/efi.h"
-#include <gnu_efi/efilib.h>
+#include "efi.h"
+#include <efilib.h>
 #pragma warning(pop)
 #include <string.h>
-#include "HEAP/HEAP.h"
+#include "HEAP.h"
 #include "GLOBALS.h"
 #include "BOOT_DATA_INTERFACE.h"
 Heap heap = { 0 };

@@ -2,6 +2,7 @@
 extern "C" {
 #endif // __cplusplus
 #pragma warning (push,0)
+
 #include <efi.h>
 #include <efilib.h>
 #include <libsmbios.h>

@@ -84,5 +84,6 @@ typedef struct {
 
 
 } BOOT_DATA_INTERFACE;
+EFI_GUID gBootInterfaceGuid = { 0x39c08a92 , 0xdd7e ,0x475b , {0xbe73 , 0x78ddad27595e } } 
 
 static  const unsigned int bootLoaderHeapMemory = 0xFFFFFFFF; //custom magic memory number that shows up in the memory map that signifies this is bootloader memory
