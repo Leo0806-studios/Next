@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -18,55 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="assert.h" />
-    <ClInclude Include="complex.h" />
-    <ClInclude Include="CRT_CORE.h" />
-    <ClInclude Include="CRT_MACROS.h" />
-    <ClInclude Include="CRT_STARTUP.h" />
-    <ClInclude Include="ctype.h" />
-    <ClInclude Include="errno.h" />
-    <ClInclude Include="fenv.h" />
-    <ClInclude Include="float.h" />
-    <ClInclude Include="inttypes.h" />
-    <ClInclude Include="iso646.h" />
-    <ClInclude Include="limits.h" />
-    <ClInclude Include="locale.h" />
-    <ClInclude Include="MAIN_LOCALE.h" />
-    <ClInclude Include="math.h" />
-    <ClInclude Include="MATH_SOFT_TRIG.h" />
-    <ClInclude Include="MATH_X87_TRIG.h" />
-    <ClInclude Include="setjmp.h" />
-    <ClInclude Include="signal.h" />
-    <ClInclude Include="stdalign.h" />
-    <ClInclude Include="stdarg.h" />
-    <ClInclude Include="stdbool.h" />
-    <ClInclude Include="stddef.h" />
-    <ClInclude Include="stdint.h" />
-    <ClInclude Include="stdio.h" />
-    <ClInclude Include="stdlib.h" />
-    <ClInclude Include="stdnoreturn.h" />
-    <ClInclude Include="string.h" />
-    <ClInclude Include="ThreadingSharedSymbols.h" />
-    <ClInclude Include="wchar.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="locale.c" />
-    <ClCompile Include="stdlib.c" />
-    <ClCompile Include="string.c" />
-    <ClCompile Include="wassert.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="DependencyTracer.md">
-      <SubType>
-      </SubType>
-    </None>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{99dcd9fc-9da9-4f7e-a6ef-7ad0a02194c5}</ProjectGuid>
-    <RootNamespace>CRT</RootNamespace>
+    <ProjectGuid>{471b404a-d5ff-4843-93a0-70576c6ed8c8}</ProjectGuid>
+    <RootNamespace>CPPRT</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -98,7 +54,6 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -115,12 +70,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -165,22 +114,15 @@
     <ClCompile>
       <WarningLevel>EnableAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions);__CRT_BUILD</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
-      <AdditionalIncludeDirectories>$(SolutionDir)CompilerIncludes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard_C>stdclatest</LanguageStandard_C>
-      <CompileAs>CompileAsC</CompileAs>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <DisableSpecificWarnings>5045</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -190,15 +132,6 @@
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
-    <Lib>
-      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
-    </Lib>
-    <Lib>
-      <SubSystem>EFI Application</SubSystem>
-    </Lib>
-    <PreBuildEvent>
-      <Command>powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(SolutionDir)PreBuildTool.ps1" -CompilerPath "$(ClCompilerPath)" -UcrtPath "$(UCRTContentRoot)Include\$(TargetUniversalCRTVersion)\ucrt" -DestinationPath "$(SolutionDir)CompilerIncludes"</Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -206,22 +139,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions);__CRT_BUILD</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
-      <AdditionalIncludeDirectories>$(SolutionDir)CompilerIncludes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard_C>stdclatest</LanguageStandard_C>
-      <CompileAs>CompileAsC</CompileAs>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <DisableSpecificWarnings>5045</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -231,18 +157,16 @@
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
-    <Lib>
-      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
-    </Lib>
-    <Lib>
-      <SubSystem>EFI Application</SubSystem>
-    </Lib>
-    <PreBuildEvent>
-      <Command>powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(SolutionDir)PreBuildTool.ps1" -CompilerPath "$(ClCompilerPath)" -UcrtPath "$(UCRTContentRoot)Include\$(TargetUniversalCRTVersion)\ucrt" -DestinationPath "$(SolutionDir)CompilerIncludes"</Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRT\CRT.vcxproj">
+      <Project>{99dcd9fc-9da9-4f7e-a6ef-7ad0a02194c5}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="INIT_CXX_RUNTIME.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
   </ImportGroup>
 </Project>

@@ -13,5 +13,13 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\INTERNALS">
+      <UniqueIdentifier>{4dd5d5ad-3fc3-49e9-a285-b30ac3eff4eb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="INIT_CXX_RUNTIME.h">
+      <Filter>Header Files\INTERNALS</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

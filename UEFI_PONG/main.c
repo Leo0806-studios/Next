@@ -66,6 +66,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	UINTN Event;
 
 	EFI_STATUS InitStaus =InitBootloader(ImageHandle, SystemTable);
+	
 	if (EFI_ERROR(InitStaus)) {
 
 	}

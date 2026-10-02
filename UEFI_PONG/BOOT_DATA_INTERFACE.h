@@ -50,7 +50,7 @@ typedef struct {
 	MADT_TABLES MadtTables;
 
 
-	
+
 }ACPI_TABLES;
 
 #define MP_DATA_VERSION 0001
@@ -84,6 +84,6 @@ typedef struct {
 
 
 } BOOT_DATA_INTERFACE;
-EFI_GUID gBootInterfaceGuid = { 0x39c08a92 , 0xdd7e ,0x475b , {0xbe73 , 0x78ddad27595e } } 
+static const EFI_GUID gBootInterfaceGuid = { 0x39c08a92 , 0xdd7e ,0x475b , {0xbe,0x73 , 0x78,0xdd,0xad,0x27,0x59,0x5e } };
 
 static  const unsigned int bootLoaderHeapMemory = 0xFFFFFFFF; //custom magic memory number that shows up in the memory map that signifies this is bootloader memory

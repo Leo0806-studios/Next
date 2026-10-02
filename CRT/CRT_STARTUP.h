@@ -6,6 +6,8 @@
 #include "stdint.h"
 #include "wchar.h"
 __CRT_START
+#pragma warning(push)
+#pragma warning(disable: __DISABLE_CRT_WARNINGS)
 
 typedef enum __CRT_API_ERROR {
 	__CRT_SUCCESS = 0,
@@ -36,6 +38,27 @@ typedef struct __CRT_OS_CALLBACKS
 	void (*readW)(const wchar_t* str) ;
 	void (*writeW)(const wchar_t* str) ;
 } __CRT_OS_CALLBACKS;
+typedef enum __CRT_MAIN_STATE {
+	e_minMain,
+	e_main,
+	e_halfMainRet,
+	e_halfMainParams
+}__CRT_MAIN_STATE;
+	typedef union __CRT_MAIN_HOLDER {
+		void(*minMain)(void);
+		int(*main)(int, char**);
+		int (*halfMainRet)(void);
+		int(*halfMainParams)(int, char**);
+	} __CRT_MAIN_HOLDER;
+typedef struct __CRT_MAIN_INFO {
+	__CRT_MAIN_HOLDER main;
+	__CRT_MAIN_STATE state;
+
+}__CRT_MAIN_INFO;
+typedef struct __CRT_INIT_PARAMETERS {
+	__CRT_OS_CALLBACKS callbacks;
+	__CRT_MAIN_INFO mainInfo;
+}__CRT_INIT_PARAMETERS;
 void TerminateProcess(int exitCode);
 void* AlocatePage(void);
 void* AllocatePages(size_t amountOfPages);
@@ -66,6 +89,6 @@ size_t Read(void* handle, void* buffer, size_t size);
 size_t Write(void* handle, const void* buffer, size_t size);
 void WriteW(const wchar_t* str);
 void ReadW(const wchar_t* str);
-extern int main(int argc, char** argv);
-bool __MainCRTStartup(__CRT_OS_CALLBACKS* callbacks, int argc, char** argv);
+bool __MainCRTStartup(__CRT_INIT_PARAMETERS* params, int argc, char** argv);
+#pragma warning(pop)
 __CRT_END
