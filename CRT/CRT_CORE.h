@@ -41,6 +41,7 @@ typedef _Bool bool; //yeah yeah. intellisense will complain but in pure C this i
 #	define false 0
 #	endif
 #endif
+#define Tuple(Name,TypeA,TypeB) typedef struct Name##_Tuple { TypeA first; TypeB second; } Name##_Tuple
 
 //C version dedection macros
 #if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202311L

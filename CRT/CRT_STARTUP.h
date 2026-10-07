@@ -27,6 +27,9 @@ typedef struct __CRT_OS_CALLBACKS
 {
 	
 	void(*TerminateProcess)(int exitCode);
+	void* (*createThread)(void(*startAddress)(void*), void* arg);
+	void(*joinThread)(void* threadHandle);
+	void(*terminateThread)(void* threadHandle);
 	void* (*alocatePage)(void) ;
 	void* (*allocatePages)(size_t amountOfPages) ;
 	bool (*freePage)(void* ptr) ;

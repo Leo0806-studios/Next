@@ -118,7 +118,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp23</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CPP_RUNTIMELIB_STATIC_PART\HEADER;$(SolutionDir)FREESTANDING_STD++LIB;$(SolutionDir)depend\headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -160,7 +160,7 @@
       <PreprocessorDefinitions>;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp23</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
@@ -188,14 +188,11 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CPP_RUNTIMELIB_STATIC_PART\CPP_RUNTIMELIB_STATIC_PART.vcxproj">
-      <Project>{433d88f9-0cf3-42da-9a57-d717557a5258}</Project>
+    <ProjectReference Include="..\CPPRT\CPPRT.vcxproj">
+      <Project>{471b404a-d5ff-4843-93a0-70576c6ed8c8}</Project>
     </ProjectReference>
     <ProjectReference Include="..\CRT\CRT.vcxproj">
       <Project>{99dcd9fc-9da9-4f7e-a6ef-7ad0a02194c5}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\FREESTANDING_STD++LIB\FREESTANDING_STD++LIB.vcxproj">
-      <Project>{bee9a4c9-bc28-4a6c-a32f-6d238a748ee1}</Project>
     </ProjectReference>
     <ProjectReference Include="..\UEFI_PONG\UEFI_PONG.vcxproj">
       <Project>{1c6aa463-4706-40f5-84a7-ee2d28b2b692}</Project>

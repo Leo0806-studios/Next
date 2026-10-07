@@ -166,6 +166,12 @@
   <ItemGroup>
     <ClInclude Include="INIT_CXX_RUNTIME.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="INIT_CXX_RUNTIME.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

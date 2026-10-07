@@ -111,6 +111,9 @@
     <ClInclude Include="stdnoreturn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HEAP.h">
+      <Filter>Header Files\INTERNALS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="wassert.c">
@@ -123,6 +126,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="locale.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HEAP.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

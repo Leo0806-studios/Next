@@ -161,7 +161,17 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	//SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 
 	SystemTable->BootServices->Stall(1000000);
-	SystemTable->RuntimeServices->SetVariable(L"BootInterface", &gBootInterfaceGuid, EFI_VARIABLE_NON_VOLATILE, sizeof(BOOT_DATA_INTERFACE*), &BootInterface);
+	BOOT_DATA_INTERFACE* BootInterfacePtr = &BootInterface;
+
+	EFI_STATUS setStatus = SystemTable->RuntimeServices->SetVariable(
+		L"BootInterface",
+		&gBootInterfaceGuid,
+		EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS,
+		sizeof(BootInterfacePtr),
+		&BootInterfacePtr
+	);
+
+	Print(L"SetVariable status: %r\n", setStatus);
 		status = uefi_call_wrapper(BS->StartImage, 3, KernelImage, NULL, NULL);
 
 }

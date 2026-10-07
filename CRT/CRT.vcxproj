@@ -28,6 +28,7 @@
     <ClInclude Include="errno.h" />
     <ClInclude Include="fenv.h" />
     <ClInclude Include="float.h" />
+    <ClInclude Include="HEAP.h" />
     <ClInclude Include="inttypes.h" />
     <ClInclude Include="iso646.h" />
     <ClInclude Include="limits.h" />
@@ -51,6 +52,7 @@
     <ClInclude Include="wchar.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HEAP.c" />
     <ClCompile Include="locale.c" />
     <ClCompile Include="stdlib.c" />
     <ClCompile Include="string.c" />
