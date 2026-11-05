@@ -29,6 +29,7 @@
     <ClInclude Include="fenv.h" />
     <ClInclude Include="float.h" />
     <ClInclude Include="HEAP.h" />
+    <ClInclude Include="intrin.h" />
     <ClInclude Include="inttypes.h" />
     <ClInclude Include="iso646.h" />
     <ClInclude Include="limits.h" />

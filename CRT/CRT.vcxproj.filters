@@ -114,6 +114,9 @@
     <ClInclude Include="HEAP.h">
       <Filter>Header Files\INTERNALS</Filter>
     </ClInclude>
+    <ClInclude Include="intrin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="wassert.c">
