@@ -6,10 +6,11 @@
 #include "stdint.h"
 #include "wchar.h"
 __CRT_START
+
 #pragma warning(push)
 #pragma warning(disable: __DISABLE_CRT_WARNINGS)
 
-typedef enum __CRT_API_ERROR {
+typedef enum __CRT_API_ERROR:uint64_t {
 	__CRT_SUCCESS = 0,
 	__CRT_OUT_OF_MEMORY = 1,
 	__CRT_INVALID_ARGUMENT = 2,
@@ -19,53 +20,75 @@ typedef enum __CRT_API_ERROR {
 	__CRT_STREAM_READ_ERROR = 6,
 	__CRT_STREAM_WRITE_ERROR = 7,
 	__CRT_STREAM_ALREADY_EXISTS = 8,
+	__CRT_MEMORY_FREE_FAILIURE=9
 }__CRT_API_ERROR;
+
+
 typedef struct __CRT_OS_SIGNAL_TABLE {
 	__int64 SIGABRT, SIGFPE, SIGILL, SIGINT, SIGSEGV, SIGTERM;
 } __CRT_OS_SIGNAL_TABLE;
+typedef struct __CRT_OS_API_RETURN_VPTR {
+	__CRT_API_ERROR code;
+	void* value;
+}__CRT_OS_API_RETURN_VPTR;
+typedef struct __CRT_OS_API_RETURN_BOOL {
+	__CRT_API_ERROR code;
+	bool value;
+}__CRT_OS_API_RETURN_BOOL;
+typedef struct __CRT_OS_API_RETURN_SIZE_T {
+	__CRT_API_ERROR code;
+	size_t value;
+
+}__CRT_OS_API_RETURN_SIZE_T;
 typedef struct __CRT_OS_CALLBACKS
 {
 	
-	void(*TerminateProcess)(int exitCode);
-	void* (*createThread)(void(*startAddress)(void*), void* arg);
-	void(*joinThread)(void* threadHandle);
-	void(*terminateThread)(void* threadHandle);
-	void* (*alocatePage)(void) ;
-	void* (*allocatePages)(size_t amountOfPages) ;
-	bool (*freePage)(void* ptr) ;
-	bool(*freePages)(void* ptr) ;
-	void* (*openStream)(const char* path,uint64_t flags) ;
-	void  (*closeStream)(void* handle);
-	size_t(*read)(void* handle, void* buffer, size_t size) ;
-	size_t(*write)(void* handle, const void* buffer, size_t size) ;
-	void (*readW)(const wchar_t* str) ;
-	void (*writeW)(const wchar_t* str) ;
+	__CRT_API_ERROR(*TerminateProcess)(int exitCode);
+	__CRT_OS_API_RETURN_VPTR (*createThread)(void(*startAddress)(void*), void* arg);
+	__CRT_API_ERROR(*joinThread)(void* threadHandle);
+	__CRT_API_ERROR(*terminateThread)(void* threadHandle);
+	__CRT_OS_API_RETURN_VPTR(*allocatePage)(void) ;
+	__CRT_OS_API_RETURN_VPTR(*allocatePages)(size_t amountOfPages) ;
+	__CRT_API_ERROR(*freePage)(void* ptr) ;
+	__CRT_API_ERROR(*freePages)(void* ptr) ;
+	__CRT_OS_API_RETURN_VPTR (*openStream)(const char* path,uint64_t flags) ;
+	__CRT_API_ERROR  (*closeStream)(void* handle);
+	__CRT_OS_API_RETURN_SIZE_T(*read)(void* handle, void* buffer, size_t size) ;
+	__CRT_OS_API_RETURN_SIZE_T(*write)(void* handle, const void* buffer, size_t size) ;
+	__CRT_API_ERROR (*readW)(const wchar_t* str) ;
+	__CRT_API_ERROR(*writeW)(const wchar_t* str) ;
 } __CRT_OS_CALLBACKS;
-typedef enum __CRT_MAIN_STATE {
-	e_minMain,
-	e_main,
-	e_halfMainRet,
-	e_halfMainParams
-}__CRT_MAIN_STATE;
-	typedef union __CRT_MAIN_HOLDER {
-		void(*minMain)(void);
-		int(*main)(int, char**);
-		int (*halfMainRet)(void);
-		int(*halfMainParams)(int, char**);
-	} __CRT_MAIN_HOLDER;
-typedef struct __CRT_MAIN_INFO {
-	__CRT_MAIN_HOLDER main;
-	__CRT_MAIN_STATE state;
 
-}__CRT_MAIN_INFO;
 typedef struct __CRT_INIT_PARAMETERS {
 	__CRT_OS_CALLBACKS callbacks;
-	__CRT_MAIN_INFO mainInfo;
+	bool callMain;
 }__CRT_INIT_PARAMETERS;
 void TerminateProcess(int exitCode);
-void* AlocatePage(void);
+/// <summary>
+/// allocates a single 4KiB page.
+/// </summary>
+/// <param name=""></param>
+/// <returns></returns>
+void* AllocatePage(void);
+/// <summary>
+/// Allocates a contiguose region of 4KiB pages
+/// </summary>
+/// <param name="amountOfPages"></param>
+/// <returns></returns>
 void* AllocatePages(size_t amountOfPages);
+/// <summary>
+/// Frees a page allocated with AllocatePage. passing a pointer not allocated with it may lead to undefined behaviour
+/// </summary>
+/// <param name="ptr"></param>
+/// <returns></returns>
 bool FreePage(void* ptr);
+
+/// <summary>
+/// frees a region of pages allocated wiht AllocatePages. passing a pointer not allocated with this may lead to undefined behaviour.
+/// </summary>
+/// <param name="ptr"></param>
+/// <returns></returns>
+bool FreePages(void* ptr);
 
 /// <summary>
 /// opens a Stream and returns a handle to it. The flags parameter is a bitmask that specifies the access mode and other options for the Stream. The following flags are defined:
@@ -89,9 +112,22 @@ void CloseStream(void* handle);
 /// <param name="size"></param>
 /// <returns></returns>
 size_t Read(void* handle, void* buffer, size_t size);
+/// <summary>
+/// Writes "size" bytes of data to the stream. the exact behaviour depends on the flags with which the stream was opened
+/// </summary>
+/// <param name="handle"></param>
+/// <param name="buffer"></param>
+/// <param name="size"></param>
+/// <returns></returns>
 size_t Write(void* handle, const void* buffer, size_t size);
-void WriteW(const wchar_t* str);
-void ReadW(const wchar_t* str);
-bool __MainCRTStartup(__CRT_INIT_PARAMETERS* params, int argc, char** argv);
+typedef int(*mainFunc)(int, char**) ;
+/// <summary>
+/// main entrypoint of the program. calls main if defined in th init parameters the return is the return value of main. otherwise it is zero
+/// </summary>
+/// <param name="params"></param>
+/// <param name="argc"></param>
+/// <param name="argv"></param>
+/// <returns></returns>
+int __MainCRTStartup(__CRT_INIT_PARAMETERS* params, int argc, char** argv);
 #pragma warning(pop)
 __CRT_END

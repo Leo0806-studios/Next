@@ -8,7 +8,7 @@
 #endif // !__STDC_VERSION__
 
 
-
+#define __CRT_PAGE_SIZE 4096
 #ifndef _WCHAR_T_DEFINED
 #	define _WCHAR_T_DEFINED
 typedef unsigned short wchar_t;
